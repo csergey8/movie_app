@@ -27,7 +27,7 @@ export const createAsyncActionCreator = (actionType, asyncRequestFn, requestPara
 
 const initialAsyncState = { isLoading: false, response: null, request: null };
 
-export const createAsyncReducer = (actionType, actionHandlerKeyFuncs = {}, initialAsyncState) => {
+export const createAsyncReducer = (actionType, actionHandlerKeyFuncs = {}, initialState = initialAsyncState) => {
   const startReducerFn = (state, action) => ({
     ...state,
     isLoading: true,
