@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import {RefreshIndicator} from '@material-ui/core';
+import {CircularProgress} from '@material-ui/core';
 
 const styles = {
   refreshStyle: {
@@ -14,7 +14,7 @@ const styles = {
 const Loader = ({ isLoading, children }) => {
   if(isLoading) {
   return (
-    <RefreshIndicator
+    <CircularProgress
     style={styles.refreshStyle}
     top={0}
     left={0}

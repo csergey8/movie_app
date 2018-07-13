@@ -5,7 +5,7 @@ import Loader from '../../common/loader.component';
 
 const styles = {
   movieColumn: {
-    margingBottom: 20
+    marginBottom: '20px'
   }
 }
 

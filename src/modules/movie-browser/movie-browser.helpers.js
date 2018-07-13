@@ -1,4 +1,4 @@
-const TMBD_IMAGE_BASE_URL = (width = 300) => `https://image.tmbd.org/t/p/w${width}`;
+const TMBD_IMAGE_BASE_URL = (width = 300) => `https://image.tmdb.org/t/p/w${width}`;
 
 const updateMoviePicturesUrls = (movieResult, width = 300) => ({
   ...movieResult,
