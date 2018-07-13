@@ -6,13 +6,38 @@ import NavBar from './navBar';
 import * as movieActions from './movie-browser.actions';
 import * as movieHelpers from './movie-browser.helpers';
 import MovieList from './movie-list/movie-list.component';
+import * as scrollHelpers from '../common/scroll.helpers';
 
 
 
 class MovieBrowser extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentPage: 1
+    }
+  }
 
   componentDidMount() {
-    this.props.getTopMovies(1)
+    window.onscroll = this.handleScroll;
+    this.props.getTopMovies(1);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    console.log(scrollHelpers.getScrollDownPercantage(window));
+    const { topMovies } = this.props;
+    if(!topMovies.isLoading) {
+      let percentageScrolled = scrollHelpers.getScrollDownPercantage(window);
+      if(percentageScrolled > .8) {
+        const nextPage = this.state.currentPage + 1;
+        this.props.getTopMovies(nextPage);
+        this.setState({currentPage: nextPage})
+      }
+    }
   }
   
   render() {
